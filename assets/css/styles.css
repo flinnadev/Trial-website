@@ -1,47 +1,118 @@
-html {
+* {
+  box-sizing: border-box;
+}
+
+:root {
   font-size: 16px;
+  --nav-height: 2rem;
 }
+
 body {
-  font-family: "Courier New", Courier, monospace;
-  color: #996633;
-  line-height: 1.3;
+  padding-top: var(--nav-height);
 }
 
-.main-header {
-  background-color: #996633;
-  font-size: 1em;
+nav {
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.nav-list-item {
+nav a {
   display: inline-block;
-  min-height: 45px;
+  padding: 0.5em 1em;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
 }
 
-.first-section {
-  background-color: #ffe6e6;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  min-height: 100vh;
-  padding: 10px;
-  text-align: left;
+nav > ul {
+  display: flex;
+  transition: right 0.5s ease-in-out;
 }
 
-.center-wapper {
-  max-width: 1584;
+nav > div {
+  padding: 0.5rem;
+  margin-left: auto;
+  display: none;
+}
+
+header {
+  position: relative;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+header > img {
   width: 100%;
-  max-width: 234;
+}
+header > div {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 3rem;
+  text-align: center;
+}
+
+section {
+  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
-  padding: 0 1em;
-}
-
-.nav-link {
-  display: inline-block;
   padding: 1em;
-  color: #ffe6e6;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 1em;
+section h2,
+section h2 + p {
+  text-align: center;
+}
+
+section > div {
+  display: flex;
+  gap: 3em;
+  padding: 0 2em;
+}
+
+section img {
+  width: 100%;
+}
+figcaption {
+  text-align: center;
+  padding: 1em;
+}
+
+@media screen and (max-width: 600px) {
+  section > div {
+    flex-direction: column;
+    gap: 1em;
+    padding: 0 3em;
+  }
+  .nav {
+    display: block;
+  }
+  nav {
+    z-index: 1;
+  }
+  nav a {
+    background-color: black;
+    width: 100%;
+  }
+  nav > ul {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav-hover:hover ul {
+    right: 0;
+  }
 }
